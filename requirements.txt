@@ -1,0 +1,10 @@
+streamlit
+keras.models
+PIL
+numpy
+streamlit_option_menu
+proses
+streamlit_webrtc
+cv2
+base64
+gtts
