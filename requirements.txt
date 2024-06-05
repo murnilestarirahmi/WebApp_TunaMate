@@ -3,7 +3,8 @@ keras
 Pillow
 numpy
 streamlit_option_menu
-proses
+classify
+text-to-speech
 streamlit_webrtc
 opencv-python
 base64
