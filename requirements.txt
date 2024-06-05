@@ -13,3 +13,4 @@ opencv-python-headless
 gTTS
 joblib
 h5py
+aioice
