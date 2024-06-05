@@ -7,5 +7,4 @@ classify
 text-to-speech
 streamlit_webrtc
 opencv-python
-base64
-gtts
+gTTS
