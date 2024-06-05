@@ -1,10 +1,10 @@
 streamlit
-keras.models
-PIL
+keras
+Pillow
 numpy
 streamlit_option_menu
 proses
 streamlit_webrtc
-cv2
+opencv-python
 base64
 gtts
