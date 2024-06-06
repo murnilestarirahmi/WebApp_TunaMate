@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 class VideoTransformer(VideoTransformerBase):
-    def __init__(self):
+    def init(self):
         self.model = load_model('./model/best_model.h5')
         with open('./model/labels.txt', 'r') as f:
             self.class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
@@ -40,36 +40,39 @@ with st.sidebar:
 if selected == "Deteksi Uang":
     set_background('./doc/bg2.jpg')
     st.title('Deteksi Nominal Uang Rupiah')
-    webrtc_ctx = webrtc_streamer(
-        key="example",
-        video_transformer_factory=VideoTransformer,
-        desired_playing_state=True,
-    )
-    
-    if webrtc_ctx.video_transformer:
-        if st.button("Prediksi"):
-            video_transformer = webrtc_ctx.video_transformer
-            image = video_transformer.get_image()
-            if image is not None:
-                image_pil = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-                st.image(image_pil, caption="Gambar dari Webcam", use_column_width=True)
-                class_name, conf_score = classify(image_pil, video_transformer.model, video_transformer.class_names)
-                st.write("## Rp{}".format(class_name))
-                st.write("### Skor Prediksi: {}%".format(int(conf_score * 1000) / 10))
+    try:
+        webrtc_ctx = webrtc_streamer(
+            key="example",
+            video_transformer_factory=VideoTransformer,
+            desired_playing_state=True,
+        )
+        
+        if webrtc_ctx.video_transformer:
+            if st.button("Prediksi"):
+                video_transformer = webrtc_ctx.video_transformer
+                image = video_transformer.get_image()
+                if image is not None:
+                    image_pil = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+                    st.image(image_pil, caption="Gambar dari Webcam", use_column_width=True)
+                    class_name, conf_score = classify(image_pil, video_transformer.model, video_transformer.class_names)
+                    st.write("## Rp{}".format(class_name))
+                    st.write("### Skor Prediksi: {}%".format(int(conf_score * 1000) / 10))
 
-                # Convert text to speech
-                text = f"{class_name}"
-                audio_file = text_to_speech(text)
+                    # Convert text to speech
+                    text = f"{class_name}"
+                    audio_file = text_to_speech(text)
 
-                # Play the audio file using st.empty to force refresh
-                audio_placeholder = st.empty()
-                audio_bytes = open(audio_file, "rb").read()
-                audio_html = """
-                <audio autoplay>
-                <source src="data:audio/mp3;base64,{}" type="audio/mp3">
-                </audio>
-                """.format(base64.b64encode(audio_bytes).decode())
-                audio_placeholder.markdown(audio_html, unsafe_allow_html=True)
+                    # Play the audio file using st.empty to force refresh
+                    audio_placeholder = st.empty()
+                    audio_bytes = open(audio_file, "rb").read()
+                    audio_html = """
+                    <audio autoplay>
+                    <source src="data:audio/mp3;base64,{}" type="audio/mp3">
+                    </audio>
+                    """.format(base64.b64encode(audio_bytes).decode())
+                    audio_placeholder.markdown(audio_html, unsafe_allow_html=True)
+    except AttributeError as e:
+        st.error(f"Terjadi kesalahan: {str(e)}")
 
 if selected == "About":
     st.markdown("""
