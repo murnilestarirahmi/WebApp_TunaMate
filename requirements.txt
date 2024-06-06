@@ -1,6 +1,6 @@
 streamlit
 keras.models
-Pillow
+Pillow==10.2.0
 numpy
 streamlit_option_menu
 proses
