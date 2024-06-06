@@ -1,6 +1,6 @@
 streamlit
 keras.models
-PIL
+Pillow
 numpy
 streamlit_option_menu
 proses
