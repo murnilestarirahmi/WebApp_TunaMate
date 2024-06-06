@@ -50,7 +50,7 @@ if selected == "Deteksi Uang":
         if st.button("Prediksi"):
             video_transformer = webrtc_ctx.video_transformer
             image = video_transformer.get_image()
-            if image is None:
+            if image is not None:
                 image_pil = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
                 st.image(image_pil, caption="Gambar dari Webcam", use_column_width=True)
                 class_name, conf_score = classify(image_pil, video_transformer.model, video_transformer.class_names)
