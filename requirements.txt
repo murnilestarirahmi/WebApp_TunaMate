@@ -1,7 +1,7 @@
-streamlit
-keras.models
+streamlit==1.35.0
+keras==2.12.0
 Pillow==10.2.0
-numpy
+numpy==1.26.4
 streamlit_option_menu
 proses
 streamlit_webrtc
