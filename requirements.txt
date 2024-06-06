@@ -6,5 +6,4 @@ streamlit_option_menu==0.3.12
 streamlit_webrtc==0.47.6
 opencv-python==4.9.0.80
 opencv-python-headless==4.9.0.80
-base64
 gTTS==2.5.1
