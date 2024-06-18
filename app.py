@@ -30,7 +30,7 @@ class VideoTransformer(VideoTransformerBase):
 # Navigasi
 with st.sidebar:
     selected = option_menu(
-        menu_title="Pilih",
+        menu_title="Menu",
         options=["Deteksi Uang", "About"],
         icons=['house', "list-task"],
         menu_icon="cast",
@@ -73,24 +73,24 @@ if selected == "Deteksi Uang":
 
 if selected == "About":
     st.markdown("""
-        # 🤖 RepoMedUNM
-        ### Hallo Sahabat 👋
+        # 🤖 TunaMate
+        ### Hallo Sahabat Tunanetra,
 
-        Ini penjelasan aplikasi.
+        TunaMate merupakan aplikasi berbasis web yang menggunakan teknologi computer vision yang dapat mendeteksi nominal uang kertas rupiah. Pengguna dapat mengarahkan uang kertas ke kamera, lalu aplikasi akan memberikan output informasi tentang nominal uang melalui suara.
     """, True)
     st.write("---")
 
     st.markdown("""
-        ### 📑 Informasi Tim
+        ### 📑 Tim 2 - Kelas Awan Pintar
     """, True)
     
     # Info anggota tim
     team_info = [
-        {"name": "Anggota 1", "role": "Role 1", "image": "./doc/murni.png"},
-        {"name": "Anggota 2", "role": "Role 2", "image": "./doc/murni.png"},
-        {"name": "Anggota 3", "role": "Role 3", "image": "./doc/murni.png"},
-        {"name": "Anggota 4", "role": "Role 4", "image": "./doc/murni.png"},
-        {"name": "Anggota 5", "role": "Role 5", "image": "./doc/murni.png"},
+        {"name": "Murni Lestari Rahmi", "role": "Chief Executive Officer", "image": "./doc/murni.png"},
+        {"name": "M Syahrilnazwa", "role": "Project Manager", "image": "./doc/syahril.png"},
+        {"name": "Gina Susilawati", "role": "Data Scientist", "image": "./doc/gina.png"},
+        {"name": "Afdila Ayu Fitriani", "role": "Data Analyst", "image": "./doc/afdila.png"},
+        {"name": "Astri Oktavia Ningsih", "role": "Full Stack Developer", "image": "./doc/astri.png"},
     ]
     
     # Menampilkan anggota tim dalam dua baris
@@ -98,21 +98,21 @@ if selected == "About":
     for i, member in enumerate(team_info[:3]):
         with [col1, col2, col3][i]:
             st.image(member["image"], width=150)
-            st.markdown(f"<div style='text-align: center; margin-top: -10px;'><strong>{member['name']}</strong></div>", unsafe_allow_html=True)
-            st.markdown(f"<div style='text-align: center; margin-top: -5px;'>{member['role']}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div margin-top: -10px;'><strong>{member['name']}</strong></div>", unsafe_allow_html=True)
+            st.markdown(f"<div margin-top: -5px;'>{member['role']}</div>", unsafe_allow_html=True)
 
     col_empty, col4, col5, col_empty2 = st.columns([1, 2, 2, 1])
     with col_empty:
         st.empty()
     with col4:
         st.image(team_info[3]["image"], width=150)
-        st.markdown(f"<div style='text-align: center; margin-top: -10px;'><strong>{team_info[3]['name']}</strong></div>", unsafe_allow_html=True)
-        st.markdown(f"<div style='text-align: center; margin-top: -5px;'>{team_info[3]['role']}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div margin-top: -10px;'><strong>{team_info[3]['name']}</strong></div>", unsafe_allow_html=True)
+        st.markdown(f"<div margin-top: -5px;'>{team_info[3]['role']}</div>", unsafe_allow_html=True)
 
     with col5:
         st.image(team_info[4]["image"], width=150)
-        st.markdown(f"<div style='text-align: center; margin-top: -10px;'><strong>{team_info[4]['name']}</strong></div>", unsafe_allow_html=True)
-        st.markdown(f"<div style='text-align: center; margin-top: -5px;'>{team_info[4]['role']}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div margin-top: -10px;'><strong>{team_info[4]['name']}</strong></div>", unsafe_allow_html=True)
+        st.markdown(f"<div margin-top: -5px;'>{team_info[4]['role']}</div>", unsafe_allow_html=True)
 
     with col_empty2:
         st.empty()
